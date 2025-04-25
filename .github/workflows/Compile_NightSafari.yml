@@ -41,7 +41,8 @@ jobs:
             -configuration Release \
             -archivePath build/Focus.xcarchive \
             -destination generic/platform=iOS \
-            -allowProvisioningUpdates
+            -allowProvisioningUpdates \
+            CODE_SIGNING_REQUIRED=NO
 
       # Export IPA without signing (no ExportOptions.plist)
       - name: Export IPA
@@ -49,7 +50,8 @@ jobs:
           xcodebuild -exportArchive \
             -archivePath build/Focus.xcarchive \
             -exportPath output \
-            -allowProvisioningUpdates
+            -allowProvisioningUpdates \
+            CODE_SIGNING_REQUIRED=NO
 
       # Upload the IPA as an artifact (using actions/upload-artifact v2)
       - name: Upload IPA
