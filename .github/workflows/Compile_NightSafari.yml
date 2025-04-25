@@ -51,7 +51,7 @@ jobs:
             -exportPath output \
             -allowProvisioningUpdates
 
-      # Upload the IPA as an artifact (using v2 for stability)
+      # Upload the IPA as an artifact (using actions/upload-artifact v2)
       - name: Upload IPA
         uses: actions/upload-artifact@v2
         with:
