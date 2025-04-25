@@ -7,26 +7,31 @@ on:
 
 jobs:
   build:
-    name: Build IPA
+    name: Build and Export IPA for iOS
     runs-on: macos-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Set up Xcode 16.2
       - name: Set up Xcode 16.2
         run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           xcodebuild -version
 
+      # Install dependencies
       - name: Install dependencies
         run: |
           ./checkout.sh
 
+      # Update the Bundle Identifier in the project (change the target)
       - name: Change Bundle ID
         run: |
           sed -i '' 's/com.mozilla.focus/com.progmem.starrysafari/g' focus-ios/Blockzilla.xcodeproj/project.pbxproj
 
+      # Archive the app using Xcode
       - name: Archive the app
         run: |
           xcodebuild archive \
@@ -38,17 +43,17 @@ jobs:
             -destination generic/platform=iOS \
             -allowProvisioningUpdates
 
-      - name: Export IPA without signing
+      # Export IPA without signing (no ExportOptions.plist)
+      - name: Export IPA
         run: |
-          mkdir -p output
           xcodebuild -exportArchive \
             -archivePath build/Focus.xcarchive \
             -exportPath output \
-            -allowProvisioningUpdates \
-            -exportOptionsPlist /dev/null || true
+            -allowProvisioningUpdates
 
+      # Upload the IPA as an artifact
       - name: Upload IPA
-        uses: actions/upload-artifact@v2  # Changed to v2
+        uses: actions/upload-artifact@v3
         with:
           name: StarrySafari-IPA
           path: output/*.ipa
