@@ -1,4 +1,4 @@
-name: A. COMPILE NightSafari iOS
+name: A. COMPILE_NightSafari iOS
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # Step 1: Checkout repository
+      # Step 1: Checkout repository (no need to clone again)
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -23,11 +23,9 @@ jobs:
           sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
           sudo xcodebuild -version
 
-      # Step 3: Clone the repository and change directory
-      - name: Clone the repository and change directory
-        run: |
-          git clone https://github.com/mozilla-mobile/firefox-ios.git
-          cd firefox-ios
+      # Step 3: Change directory to the cloned repository
+      - name: Change directory to the cloned repo
+        run: cd $GITHUB_WORKSPACE
 
       # Step 4: Pull in project dependencies
       - name: Checkout dependencies
