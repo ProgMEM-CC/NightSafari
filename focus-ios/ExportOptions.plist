@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+    <dict>
+        <key>method</key>
+        <string>ad-hoc</string> <!-- you can use "development" for local testing or "ad-hoc" for non-App Store builds -->
+        <key>destination</key>
+        <string>export</string>
+        <key>compileBitcode</key>
+        <false/>
+        <key>signingStyle</key>
+        <string>manual</string> <!-- Set to manual to avoid automatic signing -->
+        <key>signingCertificate</key>
+        <string>None</string> <!-- No signing certificate -->
+        <key>provisioningProfileSpecifier</key>
+        <string>None</string> <!-- No provisioning profile -->
+        <key>teamID</key>
+        <string></string> <!-- Empty because we aren't using signing -->
+        <key>bundleIdentifier</key>
+        <string>com.progmem.starrysafari</string> <!-- Set your desired Bundle ID here -->
+    </dict>
+</plist>
