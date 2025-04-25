@@ -1,49 +1,68 @@
-name: A. COMPILE_NightSafari iOS
+name: Build Focus IPA
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
-    name: COMPILE_NightSafari iOS
+    name: Build Focus Scheme
     runs-on: macos-latest
 
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v4
 
-      # Step 2: Set up the latest Xcode version (e.g., Xcode 15.4)
-      - name: Set up Xcode 15.4
+      - name: 🧼 Clean previous build
         run: |
-          sudo xcode-select --switch /Applications/Xcode_15.4.app/Contents/Developer
-          xcodebuild -version
+          rm -rf build
+          mkdir -p build
 
-      # Step 3: Pull in project dependencies
-      - name: Checkout dependencies
-        run: ./checkout.sh
-
-      # Step 4: Build project using Xcode project file
-      - name: Build project in Xcode
+      - name: 📦 Archive app
         run: |
-          cd focus-ios
-          xcodebuild -project Blockzilla.xcodeproj \
-                     -scheme Focus \
-                     -sdk iphoneos \
-                     -configuration Release \
-                     -allowProvisioningUpdates \
-                     -quiet
+          xcodebuild archive \
+            -project Blockzilla.xcodeproj \
+            -scheme Focus \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/Focus.xcarchive \
+            -destination 'generic/platform=iOS' \
+            -allowProvisioningUpdates
 
-      # Optional: Run tests (if needed)
-      # - name: Run tests
-      #   run: |
-      #     cd focus-ios
-      #     xcodebuild test -project Blockzilla.xcodeproj \
-      #                     -scheme Focus \
-      #                     -sdk iphonesimulator \
-      #                     -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+      - name: 📝 Create ExportOptions.plist
+        run: |
+          cat > ExportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>ad-hoc</string>
+            <key>signingStyle</key>
+            <string>automatic</string>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>compileBitcode</key>
+            <false/>
+            <key>destination</key>
+            <string>export</string>
+            <key>manageAppVersionAndBuildNumber</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+
+      - name: 📤 Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/Focus.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist ExportOptions.plist \
+            -allowProvisioningUpdates
+
+      - name: 📦 Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Focus-IPA
+          path: build/export/*.ipa
