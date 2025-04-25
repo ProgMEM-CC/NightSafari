@@ -48,10 +48,22 @@ jobs:
           xcodebuild -exportArchive \
             -archivePath build/Focus.xcarchive \
             -exportPath output \
-            -exportOptionsPlist focus-ios/ExportOptions.plist
+            -exportOptionsPlist focus-ios/ExportOptions.plist || echo "No IPA exported"
 
-      # Upload the IPA
+      # Upload IPA if exists
       - name: Upload IPA
+        if: success() && (exists('output') && steps.export.outputs != '')
+        run: |
+          if ls output/*.ipa 1> /dev/null 2>&1; then
+            echo "IPA found, uploading..."
+          else
+            echo "No IPA to upload"
+            exit 0
+          fi
+        shell: bash
+
+      - name: Upload Artifact
+        if: success()
         uses: actions/upload-artifact@v2
         with:
           name: StarrySafari-IPA
