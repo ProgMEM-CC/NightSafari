@@ -26,12 +26,12 @@ jobs:
         run: |
           ./checkout.sh
 
-      # Update the Bundle Identifier in the project (change the target)
+      # Change Bundle Identifier
       - name: Change Bundle ID
         run: |
           sed -i '' 's/com.mozilla.focus/com.progmem.starrysafari/g' focus-ios/Blockzilla.xcodeproj/project.pbxproj
 
-      # Archive the app using Xcode
+      # Archive the app
       - name: Archive the app
         run: |
           xcodebuild archive \
@@ -40,10 +40,9 @@ jobs:
             -sdk iphoneos \
             -configuration Release \
             -archivePath build/Focus.xcarchive \
-            -destination generic/platform=iOS \
-            -allowProvisioningUpdates
+            -destination generic/platform=iOS
 
-      # Export IPA using the ExportOptions.plist file
+      # Export IPA
       - name: Export IPA
         run: |
           xcodebuild -exportArchive \
@@ -51,9 +50,9 @@ jobs:
             -exportPath output \
             -exportOptionsPlist focus-ios/ExportOptions.plist
 
-      # Upload the IPA as an artifact (you can adjust the name if needed)
+      # Upload the IPA
       - name: Upload IPA
-        uses: actions/upload-artifact@v3  # Use v3 for the latest version
+        uses: actions/upload-artifact@v2
         with:
           name: StarrySafari-IPA
           path: output/*.ipa
