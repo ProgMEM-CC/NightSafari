@@ -48,7 +48,7 @@ jobs:
             -exportOptionsPlist /dev/null || true
 
       - name: Upload IPA
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2  # Changed to v2
         with:
           name: StarrySafari-IPA
           path: output/*.ipa
