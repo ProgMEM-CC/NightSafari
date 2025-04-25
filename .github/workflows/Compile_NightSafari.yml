@@ -10,32 +10,40 @@ on:
 
 jobs:
   build:
+    name: COMPILE_NightSafari iOS
     runs-on: macos-latest
 
     steps:
-      # Step 1: Checkout repository (no need to clone again)
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up the latest Xcode version
-      - name: Set up Xcode latest version
+      # Step 2: Set up the latest Xcode version (e.g., Xcode 15.4)
+      - name: Set up Xcode 15.4
         run: |
-          sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-          sudo xcodebuild -version
+          sudo xcode-select --switch /Applications/Xcode_15.4.app/Contents/Developer
+          xcodebuild -version
 
-      # Step 3: Change directory to the cloned repository
-      - name: Change directory to the cloned repo
-        run: cd $GITHUB_WORKSPACE
-
-      # Step 4: Pull in project dependencies
+      # Step 3: Pull in project dependencies
       - name: Checkout dependencies
-        run: |
-          ./checkout.sh
+        run: ./checkout.sh
 
-      # Step 5: Build project in Xcode
+      # Step 4: Build project using Xcode project file
       - name: Build project in Xcode
         run: |
           cd focus-ios
-          xcodebuild -workspace Blockzilla.xcodeproj -scheme Focus -sdk iphoneos -configuration Release
+          xcodebuild -project Blockzilla.xcodeproj \
+                     -scheme Focus \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     -allowProvisioningUpdates \
+                     -quiet
 
-      # Optionally, you can add more steps to perform tests or other validations after the build
+      # Optional: Run tests (if needed)
+      # - name: Run tests
+      #   run: |
+      #     cd focus-ios
+      #     xcodebuild test -project Blockzilla.xcodeproj \
+      #                     -scheme Focus \
+      #                     -sdk iphonesimulator \
+      #                     -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
