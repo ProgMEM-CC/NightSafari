@@ -1,68 +1,49 @@
-name: Build Focus IPA
+name: Build Focus iOS IPA
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
   build:
-    name: Build Focus Scheme
-    runs-on: macos-latest
+    runs-on: macos-13
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
     steps:
-      - name: 🔄 Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: 🧼 Clean previous build
-        run: |
-          rm -rf build
-          mkdir -p build
+    - name: Set up keychain (Optional, for code signing)
+      run: |
+        security create-keychain -p "" build.keychain
+        security default-keychain -s build.keychain
+        security unlock-keychain -p "" build.keychain
+        security set-keychain-settings
 
-      - name: 📦 Archive app
-        run: |
-          xcodebuild archive \
-            -project Blockzilla.xcodeproj \
-            -scheme Focus \
-            -sdk iphoneos \
-            -configuration Release \
-            -archivePath build/Focus.xcarchive \
-            -destination 'generic/platform=iOS' \
-            -allowProvisioningUpdates
+    - name: Install dependencies
+      run: |
+        ./checkout.sh
 
-      - name: 📝 Create ExportOptions.plist
-        run: |
-          cat > ExportOptions.plist <<EOF
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>ad-hoc</string>
-            <key>signingStyle</key>
-            <string>automatic</string>
-            <key>stripSwiftSymbols</key>
-            <true/>
-            <key>compileBitcode</key>
-            <false/>
-            <key>destination</key>
-            <string>export</string>
-            <key>manageAppVersionAndBuildNumber</key>
-            <false/>
-          </dict>
-          </plist>
-          EOF
+    - name: Build and archive
+      run: |
+        xcodebuild archive \
+          -project focus-ios/Blockzilla.xcodeproj \
+          -scheme Focus \
+          -sdk iphoneos \
+          -configuration Release \
+          -archivePath build/Focus.xcarchive \
+          -allowProvisioningUpdates \
+          -destination "generic/platform=iOS"
 
-      - name: 📤 Export IPA
-        run: |
-          xcodebuild -exportArchive \
-            -archivePath build/Focus.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist ExportOptions.plist \
-            -allowProvisioningUpdates
+    - name: Export IPA
+      run: |
+        xcodebuild -exportArchive \
+          -archivePath build/Focus.xcarchive \
+          -exportPath output \
+          -exportOptionsPlist focus-ios/ExportOptions.plist
 
-      - name: 📦 Upload IPA artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Focus-IPA
-          path: build/export/*.ipa
+    - name: Upload IPA to artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Focus-Release-IPA
+        path: output/*.ipa
