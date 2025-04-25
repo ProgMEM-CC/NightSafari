@@ -1,49 +1,59 @@
-name: Build Focus iOS IPA
+name: ACOMPILE
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: macos-13
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+    name: Build and Export IPA for iOS
+    runs-on: macos-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up keychain (Optional, for code signing)
-      run: |
-        security create-keychain -p "" build.keychain
-        security default-keychain -s build.keychain
-        security unlock-keychain -p "" build.keychain
-        security set-keychain-settings
+      # Set up Xcode 16.2
+      - name: Set up Xcode 16.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          xcodebuild -version
 
-    - name: Install dependencies
-      run: |
-        ./checkout.sh
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          ./checkout.sh
 
-    - name: Build and archive
-      run: |
-        xcodebuild archive \
-          -project focus-ios/Blockzilla.xcodeproj \
-          -scheme Focus \
-          -sdk iphoneos \
-          -configuration Release \
-          -archivePath build/Focus.xcarchive \
-          -allowProvisioningUpdates \
-          -destination "generic/platform=iOS"
+      # Update the Bundle Identifier in the project (change the target)
+      - name: Change Bundle ID
+        run: |
+          sed -i '' 's/com.mozilla.focus/com.progmem.starrysafari/g' focus-ios/Blockzilla.xcodeproj/project.pbxproj
 
-    - name: Export IPA
-      run: |
-        xcodebuild -exportArchive \
-          -archivePath build/Focus.xcarchive \
-          -exportPath output \
-          -exportOptionsPlist focus-ios/ExportOptions.plist
+      # Archive the app using Xcode
+      - name: Archive the app
+        run: |
+          xcodebuild archive \
+            -project focus-ios/Blockzilla.xcodeproj \
+            -scheme Focus \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath build/Focus.xcarchive \
+            -destination generic/platform=iOS \
+            -allowProvisioningUpdates
 
-    - name: Upload IPA to artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Focus-Release-IPA
-        path: output/*.ipa
+      # Export IPA using the ExportOptions.plist file
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/Focus.xcarchive \
+            -exportPath output \
+            -exportOptionsPlist focus-ios/ExportOptions.plist
+
+      # Upload the IPA as an artifact (you can adjust the name if needed)
+      - name: Upload IPA
+        uses: actions/upload-artifact@v2
+        with:
+          name: StarrySafari-IPA
+          path: output/*.ipa
