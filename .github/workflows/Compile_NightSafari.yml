@@ -1,4 +1,4 @@
-name: Build Firefox iOS
+name: A. COMPILE NightSafari iOS
 
 on:
   push:
