@@ -1,0 +1,43 @@
+name: Build Firefox iOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up the latest Xcode version
+      - name: Set up Xcode latest version
+        run: |
+          sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+          sudo xcodebuild -version
+
+      # Step 3: Clone the repository and change directory
+      - name: Clone the repository and change directory
+        run: |
+          git clone https://github.com/mozilla-mobile/firefox-ios.git
+          cd firefox-ios
+
+      # Step 4: Pull in project dependencies
+      - name: Checkout dependencies
+        run: |
+          ./checkout.sh
+
+      # Step 5: Build project in Xcode
+      - name: Build project in Xcode
+        run: |
+          cd focus-ios
+          xcodebuild -workspace Blockzilla.xcodeproj -scheme Focus -sdk iphoneos -configuration Release
+
+      # Optionally, you can add more steps to perform tests or other validations after the build
