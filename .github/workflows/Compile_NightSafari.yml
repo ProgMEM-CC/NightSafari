@@ -53,7 +53,7 @@ jobs:
 
       # Upload the IPA as an artifact (using actions/upload-artifact v2)
       - name: Upload IPA
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: StarrySafari-IPA
           path: output/*.ipa
