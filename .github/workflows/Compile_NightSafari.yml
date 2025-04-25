@@ -43,14 +43,10 @@ jobs:
             -destination generic/platform=iOS \
             -allowProvisioningUpdates
 
-      # Export the IPA unsigned (no plist)
-      - name: Export IPA (unsigned)
+      # Write export options to file
+      - name: Write ExportOptions.plist
         run: |
-          mkdir -p output
-          xcodebuild -exportArchive \
-            -archivePath build/Focus.xcarchive \
-            -exportPath output \
-            -exportOptionsPlist <(cat <<EOF
+          cat > ExportOptions.plist <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -72,20 +68,18 @@ jobs:
 </dict>
 </plist>
 EOF
-          )
 
-      # Upload the IPA if it exists
-      - name: Upload IPA
-        if: always()
+      # Export the IPA unsigned
+      - name: Export IPA (unsigned)
         run: |
-          if ls output/*.ipa 1> /dev/null 2>&1; then
-            echo "IPA found, proceeding to upload."
-          else
-            echo "No IPA was generated. Skipping upload."
-            exit 0
-          fi
+          mkdir -p output
+          xcodebuild -exportArchive \
+            -archivePath build/Focus.xcarchive \
+            -exportPath output \
+            -exportOptionsPlist ExportOptions.plist
 
-      - name: Upload IPA Artifact
+      # Upload the IPA artifact (if it exists)
+      - name: Upload IPA
         if: success()
         uses: actions/upload-artifact@v2
         with:
