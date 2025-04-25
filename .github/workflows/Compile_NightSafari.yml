@@ -40,29 +40,52 @@ jobs:
             -sdk iphoneos \
             -configuration Release \
             -archivePath build/Focus.xcarchive \
-            -destination generic/platform=iOS
+            -destination generic/platform=iOS \
+            -allowProvisioningUpdates
 
-      # Export IPA
-      - name: Export IPA
+      # Export the IPA unsigned (no plist)
+      - name: Export IPA (unsigned)
         run: |
+          mkdir -p output
           xcodebuild -exportArchive \
             -archivePath build/Focus.xcarchive \
             -exportPath output \
-            -exportOptionsPlist focus-ios/ExportOptions.plist || echo "No IPA exported"
+            -exportOptionsPlist <(cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>method</key>
+  <string>development</string>
+  <key>signingStyle</key>
+  <string>manual</string>
+  <key>compileBitcode</key>
+  <false/>
+  <key>stripSwiftSymbols</key>
+  <true/>
+  <key>destination</key>
+  <string>export</string>
+  <key>signingCertificate</key>
+  <string></string>
+  <key>provisioningProfiles</key>
+  <dict/>
+</dict>
+</plist>
+EOF
+          )
 
-      # Upload IPA if exists
+      # Upload the IPA if it exists
       - name: Upload IPA
-        if: success() && (exists('output') && steps.export.outputs != '')
+        if: always()
         run: |
           if ls output/*.ipa 1> /dev/null 2>&1; then
-            echo "IPA found, uploading..."
+            echo "IPA found, proceeding to upload."
           else
-            echo "No IPA to upload"
+            echo "No IPA was generated. Skipping upload."
             exit 0
           fi
-        shell: bash
 
-      - name: Upload Artifact
+      - name: Upload IPA Artifact
         if: success()
         uses: actions/upload-artifact@v2
         with:
