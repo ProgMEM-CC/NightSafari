@@ -173,6 +173,8 @@ enum Experiments {
             "is_first_run": isFirstRun,
             "is_phone": isPhone,
             "is_default_browser": isDefaultBrowser(),
+            "is_bottom_toolbar_user": isBottomToolbarUser(),
+            "has_enabled_tips_notifications": hasEnabledTipsNotifications(),
         ]
 
         // App settings, to allow experiments to target the app name and the
@@ -189,6 +191,16 @@ enum Experiments {
         return UserDefaults.standard.bool(forKey: PrefsKeys.AppleConfirmedUserIsDefaultBrowser)
     }
 
+    private static func isBottomToolbarUser() -> Bool {
+        return UserDefaults.standard
+            .bool(forKey: PrefsKeys.FeatureFlags.SearchBarPosition)
+    }
+
+    private static func hasEnabledTipsNotifications() -> Bool {
+        return UserDefaults.standard
+            .bool(forKey: PrefsKeys.Notifications.TipsAndFeaturesNotifications)
+    }
+
     private static func buildNimbus(dbPath: String,
                                     errorReporter: @escaping NimbusErrorReporter,
                                     initialExperiments: URL?,
@@ -201,7 +213,9 @@ enum Experiments {
 
         let nimbusRecordedContext = RecordedNimbusContext(
             isFirstRun: isFirstRun,
-            isDefaultBrowser: isDefaultBrowser()
+            isDefaultBrowser: isDefaultBrowser(),
+            isBottomToolbarUser: isBottomToolbarUser(),
+            hasEnabledTipsNotifications: hasEnabledTipsNotifications()
         )
 
         return NimbusBuilder(dbPath: dbPath)

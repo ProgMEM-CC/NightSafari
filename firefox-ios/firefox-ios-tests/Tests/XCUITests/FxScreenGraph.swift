@@ -669,9 +669,6 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
         screenState.gesture(forAction: Action.FxATypeEmail) { userState in
             if #available(iOS 17, *) {
                 app.webViews.textFields.firstMatch.tapAndTypeText(userState.fxaUsername!)
-            } else if #available(iOS 16, *), ProcessInfo.processInfo.operatingSystemVersion.majorVersion == 16 {
-                app.textFields[AccessibilityIdentifiers.Settings.FirefoxAccount.emailTextField]
-                    .tapAndTypeText(userState.fxaUsername!)
             } else {
                 app.staticTexts[AccessibilityIdentifiers.Settings.FirefoxAccount.emailTextField]
                     .waitAndTap()
@@ -891,9 +888,9 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
             syncModeSelector = app.toolbars["Toolbar"]
                 .segmentedControls[AccessibilityIdentifiers.TabTray.navBarSegmentedControl].buttons.element(boundBy: 2)
 
-            regularModeExperimentSelector = app.cells.buttons.containingText("\(AccessibilityIdentifiers.TabTray.selectorCell)\(1)").element
-            privateModeExperimentSelector = app.cells.buttons["\(AccessibilityIdentifiers.TabTray.selectorCell)\(0)"]
-            syncModeExperimentSelector = app.cells.buttons["\(AccessibilityIdentifiers.TabTray.selectorCell)\(2)"]
+            regularModeExperimentSelector = app.buttons["\(AccessibilityIdentifiers.TabTray.selectorCell)\(1)"]
+            privateModeExperimentSelector = app.buttons["\(AccessibilityIdentifiers.TabTray.selectorCell)\(0)"]
+            syncModeExperimentSelector = app.buttons["\(AccessibilityIdentifiers.TabTray.selectorCell)\(2)"]
         }
         screenState.tap(regularModeSelector, forAction: Action.ToggleRegularMode) { userState in
             userState.isPrivate = !userState.isPrivate
@@ -924,18 +921,18 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
         map.addScreenState(TabTrayLongPressMenu) { screenState in
             screenState.dismissOnUse = true
             screenState.tap(
-                app.otherElements[StandardImageIdentifiers.Large.plus],
+                app.buttons[StandardImageIdentifiers.Large.plus],
                 forAction: Action.OpenNewTabLongPressTabsButton,
                 transitionTo: NewTabScreen
             )
             screenState.tap(
-                app.otherElements[StandardImageIdentifiers.Large.cross],
+                app.buttons[StandardImageIdentifiers.Large.cross],
                 forAction: Action.CloseTabFromTabTrayLongPressMenu,
                 Action.CloseTab,
                 transitionTo: HomePanelsScreen
             )
             screenState.tap(
-                app.tables.cells.otherElements[StandardImageIdentifiers.Large.tab],
+                app.tables.cells.buttons[StandardImageIdentifiers.Large.tab],
                 forAction: Action.OpenPrivateTabLongPressTabsButton,
                 transitionTo: NewTabScreen
             ) { userState in

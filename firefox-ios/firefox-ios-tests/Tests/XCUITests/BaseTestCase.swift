@@ -103,7 +103,6 @@ class BaseTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        setUpExperimentVariables()
         setUpApp()
         setUpScreenGraph()
     }
@@ -320,7 +319,7 @@ class BaseTestCase: XCTestCase {
     }
 
      func selectOptionFromContextMenu(option: String) {
-        app.tables["Context Menu"].cells.otherElements[option].waitAndTap()
+       app.tables["Context Menu"].cells.buttons[option].waitAndTap()
         mozWaitForElementToNotExist(app.tables["Context Menu"])
     }
 
@@ -419,6 +418,8 @@ class BaseTestCase: XCTestCase {
             app.buttons["Done"].waitAndTap()
         }
         navigator.nowAt(BrowserTab)
+        // Dismiss new changes pop up if exists
+        app.buttons["Close"].tapIfExists()
         navigator.goto(SettingsScreen)
         navigator.goto(DisplaySettings)
         sleep(3)
@@ -447,7 +448,7 @@ class BaseTestCase: XCTestCase {
         }
         app.textFields[AccessibilityIdentifiers.Browser.AddressToolbar.searchTextField].press(forDuration: 1.5)
         mozWaitForElementToExist(app.tables["Context Menu"])
-        app.tables.otherElements[AccessibilityIdentifiers.Photon.pasteAction].waitAndTap()
+        app.tables.buttons[AccessibilityIdentifiers.Photon.pasteAction].waitAndTap()
         let urlBar = app.textFields[AccessibilityIdentifiers.Browser.AddressToolbar.searchTextField]
         mozWaitForValueContains(urlBar, value: url)
     }

@@ -9,21 +9,41 @@ public struct AddressToolbarUXConfiguration {
     let toolbarCornerRadius: CGFloat
     let browserActionsAddressBarDividerWidth: CGFloat
     let isLocationTextCentered: Bool
+    let locationTextFieldTrailingPadding: CGFloat
+    let shouldBlur: Bool
+    let backgroundAlpha: CGFloat
 
-    public static let experiment = AddressToolbarUXConfiguration(
-        toolbarCornerRadius: 12.0,
-        browserActionsAddressBarDividerWidth: 0.0,
-        isLocationTextCentered: true
-    )
+    public static func experiment(backgroundAlpha: CGFloat = 1.0,
+                                  shouldBlur: Bool = false) -> AddressToolbarUXConfiguration {
+        AddressToolbarUXConfiguration(
+            toolbarCornerRadius: 12.0,
+            browserActionsAddressBarDividerWidth: 0.0,
+            isLocationTextCentered: true,
+            locationTextFieldTrailingPadding: 0,
+            shouldBlur: shouldBlur,
+            backgroundAlpha: backgroundAlpha
+        )
+    }
 
-    public static let `default` = AddressToolbarUXConfiguration(
-        toolbarCornerRadius: 8.0,
-        browserActionsAddressBarDividerWidth: 4.0,
-        isLocationTextCentered: false
-    )
+    public static func `default`(backgroundAlpha: CGFloat = 1.0,
+                                 shouldBlur: Bool = false) -> AddressToolbarUXConfiguration {
+        AddressToolbarUXConfiguration(
+            toolbarCornerRadius: 8.0,
+            browserActionsAddressBarDividerWidth: 4.0,
+            isLocationTextCentered: false,
+            locationTextFieldTrailingPadding: 8.0,
+            shouldBlur: shouldBlur,
+            backgroundAlpha: backgroundAlpha
+        )
+    }
 
     func addressToolbarBackgroundColor(theme: any Theme) -> UIColor {
-        return isLocationTextCentered ? theme.colors.layer3 : theme.colors.layer1
+        var backgroundColor = isLocationTextCentered ? theme.colors.layer3 : theme.colors.layer1
+        if shouldBlur {
+            backgroundColor = backgroundColor.withAlphaComponent(backgroundAlpha)
+        }
+
+        return backgroundColor
     }
 
     func locationContainerBackgroundColor(theme: any Theme) -> UIColor {

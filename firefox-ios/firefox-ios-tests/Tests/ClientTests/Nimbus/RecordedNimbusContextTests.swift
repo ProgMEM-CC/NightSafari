@@ -19,12 +19,22 @@ class RecordedNimbusContextTests: XCTestCase {
      * This test should not be modified. It will fail if any of the eventQueries are invalid.
      */
     func testValidateEventQueries() throws {
-        let recordedContext = RecordedNimbusContext(isFirstRun: true, isDefaultBrowser: true)
+        let recordedContext = RecordedNimbusContext(
+            isFirstRun: true,
+            isDefaultBrowser: true,
+            isBottomToolbarUser: true,
+            hasEnabledTipsNotifications: true
+        )
         try validateEventQueries(recordedContext: recordedContext)
     }
 
     func testToJsonReturnsExpected() throws {
-        let recordedContext = RecordedNimbusContext(isFirstRun: true, isDefaultBrowser: true)
+        let recordedContext = RecordedNimbusContext(
+            isFirstRun: true,
+            isDefaultBrowser: true,
+            isBottomToolbarUser: true,
+            hasEnabledTipsNotifications: true
+        )
         recordedContext.setEventQueryValues(eventQueryValues: [RecordedNimbusContext.DAYS_OPENED_IN_LAST_28: 1.5])
         let jsonString = recordedContext.toJson()
 
@@ -40,6 +50,14 @@ class RecordedNimbusContextTests: XCTestCase {
         XCTAssertEqual(json?.removeValue(forKey: "days_since_install") as? Int32, recordedContext.daysSinceInstall)
         XCTAssertEqual(json?.removeValue(forKey: "days_since_update") as? Int32, recordedContext.daysSinceUpdate)
         XCTAssertEqual(json?.removeValue(forKey: "is_default_browser") as? Bool, recordedContext.isDefaultBrowser)
+        XCTAssertEqual(
+            json?.removeValue(forKey: "is_bottom_toolbar_user") as? Bool,
+            recordedContext.isBottomToolbarUser
+        )
+        XCTAssertEqual(
+            json?.removeValue(forKey: "has_enabled_tips_notifications") as? Bool,
+            recordedContext.hasEnabledTipsNotifications
+        )
 
         var events = json?.removeValue(forKey: "events") as? [String: Double]
         XCTAssertNotNil(events)
@@ -50,7 +68,12 @@ class RecordedNimbusContextTests: XCTestCase {
     }
 
     func testObjectRecordedToGleanMatchesExpected() throws {
-        let recordedContext = RecordedNimbusContext(isFirstRun: true, isDefaultBrowser: true)
+        let recordedContext = RecordedNimbusContext(
+            isFirstRun: true,
+            isDefaultBrowser: true,
+            isBottomToolbarUser: true,
+            hasEnabledTipsNotifications: true
+        )
 
         var value: GleanMetrics.NimbusSystem.RecordedNimbusContextObject?
         let expectation = expectation(description: "The Firefox Suggest ping was sent")
@@ -74,13 +97,23 @@ class RecordedNimbusContextTests: XCTestCase {
         XCTAssertEqual(value?.daysSinceInstall, recordedContext.daysSinceInstall.toInt64())
         XCTAssertEqual(value?.daysSinceUpdate, recordedContext.daysSinceUpdate.toInt64())
         XCTAssertEqual(value?.isDefaultBrowser, recordedContext.isDefaultBrowser)
+        XCTAssertEqual(value?.isBottomToolbarUser, recordedContext.isBottomToolbarUser)
+        XCTAssertEqual(
+            value?.hasEnabledTipsNotifications,
+            recordedContext.hasEnabledTipsNotifications
+        )
 
         XCTAssertNotNil(value?.eventQueryValues)
         XCTAssertEqual(value?.eventQueryValues?.daysOpenedInLast28, 1)
     }
 
     func testGetEventQueries() throws {
-        let recordedContext = RecordedNimbusContext(isFirstRun: true, isDefaultBrowser: true)
+        let recordedContext = RecordedNimbusContext(
+            isFirstRun: true,
+            isDefaultBrowser: true,
+            isBottomToolbarUser: true,
+            hasEnabledTipsNotifications: true
+        )
         let eventQueries = recordedContext.getEventQueries()
 
         XCTAssertEqual(eventQueries, RecordedNimbusContext.EVENT_QUERIES)

@@ -22,14 +22,6 @@ class BookmarksTests: BaseTestCase {
         navigator.nowAt(BrowserTab)
     }
 
-    private func undoBookmarkRemoval() {
-        navigator.goto(LibraryPanel_Bookmarks)
-        app.buttons["More options"].waitAndTap()
-        app.tables["Context Menu"].otherElements["bookmarkSlashLarge"].waitAndTap()
-        app.buttons["Undo"].waitAndTap()
-        navigator.nowAt(BrowserTab)
-    }
-
     private func checkUnbookmarked() {
         navigator.goto(LibraryPanel_Bookmarks)
         app.buttons["Done"].waitAndTap()
@@ -258,17 +250,6 @@ class BookmarksTests: BaseTestCase {
 
     // https://mozilla.testrail.io/index.php?/cases/view/2306908
     // Smoketest
-    func testUndoDeleteBookmark() {
-        navigator.openURL(path(forTestPage: url_1))
-        navigator.nowAt(BrowserTab)
-        waitForTabsButton()
-        bookmark()
-        checkBookmarked()
-        undoBookmarkRemoval()
-        app.buttons["Done"].waitAndTap()
-        navigator.nowAt(BrowserTab)
-    }
-
     private func addNewBookmark() {
         navigator.goto(LibraryPanel_Bookmarks)
         navigator.nowAt(MobileBookmarks)
@@ -403,7 +384,7 @@ class BookmarksTests: BaseTestCase {
         bookmark()
         mozWaitForElementToExist(app.staticTexts["Saved in “Bookmarks”"])
         unbookmark(url: urlLabelExample_3)
-        mozWaitForElementToExist(app.staticTexts["Deleted “Example Domain”"])
+        mozWaitForElementToExist(app.staticTexts["No bookmarks yet"])
     }
 
     // https://mozilla.testrail.io/index.php?/cases/view/2784448
@@ -455,14 +436,14 @@ class BookmarksTests: BaseTestCase {
         waitForElementsToExist(
             [
                 contextMenuTable,
-                contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.plus],
-                contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.privateMode],
-                contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.bookmarkSlash],
-                contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.share]
+                contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.plus],
+                contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.privateMode],
+                contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.bookmarkSlash],
+                contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.share]
             ]
         )
         // Tap to "Open in New Tab"
-        contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.plus].waitAndTap()
+        contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.plus].waitAndTap()
         // The webpage opens in a new tab
         if XCUIDevice.shared.orientation == .landscapeLeft || iPad() {
             switchToTabAndValidate(nrOfTabs: "3")
@@ -480,7 +461,7 @@ class BookmarksTests: BaseTestCase {
             app.buttons[AccessibilityIdentifiers.Browser.UrlBar.cancelButton].waitAndTap()
         }
         longPressBookmarkCell()
-        contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.privateMode].waitAndTap()
+        contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.privateMode].waitAndTap()
         // The webpage opens in a new private tab
         switchToTabAndValidate(nrOfTabs: "1", isPrivate: true)
         if #unavailable(iOS 16) {
@@ -494,7 +475,7 @@ class BookmarksTests: BaseTestCase {
             app.buttons[AccessibilityIdentifiers.Browser.UrlBar.cancelButton].waitAndTap()
         }
         longPressBookmarkCell()
-        contextMenuTable.cells.otherElements[StandardImageIdentifiers.Large.bookmarkSlash].waitAndTap()
+        contextMenuTable.cells.buttons[StandardImageIdentifiers.Large.bookmarkSlash].waitAndTap()
         // The bookmark is removed
         mozWaitForElementToNotExist(app.cells["BookmarksCell"])
         app.buttons[AccessibilityIdentifiers.Browser.UrlBar.cancelButton].tapIfExists()
