@@ -4376,6 +4376,7 @@
 		43472AE22CF4941A0008E12C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/SocialMediaApp.strings; sourceTree = "<group>"; };
 		43472AE32CF4941A0008E12C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/SocialShare.strings; sourceTree = "<group>"; };
 		434735AE29EF065700D7FFE2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Edit Card.strings"; sourceTree = "<group>"; };
+		434751C82DEDBF1700F9B963 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/Bookmarks.strings; sourceTree = "<group>"; };
 		4347544E29C87819000D9710 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Alert.strings; sourceTree = "<group>"; };
 		4347544F29C87819000D9710 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/BiometricAuthentication.strings; sourceTree = "<group>"; };
 		4347545029C87819000D9710 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/EditCard.strings; sourceTree = "<group>"; };
@@ -6045,6 +6046,7 @@
 		43AC356D2B305F9B00789923 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/LoginsHelper.strings"; sourceTree = "<group>"; };
 		43AC3C2228D8864200CCFC52 /* lo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lo; path = lo.lproj/JumpBackIn.strings; sourceTree = "<group>"; };
 		43AC3C2328D8864200CCFC52 /* lo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lo; path = lo.lproj/ToolbarLocation.strings; sourceTree = "<group>"; };
+		43AC623E2DEDBF61000E5526 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/LiveActivity.strings; sourceTree = "<group>"; };
 		43AC6E7B2D5A160400793DC1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExternalLink.strings; sourceTree = "<group>"; };
 		43AC744829C8780E0019700E /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = is.lproj/Alert.strings; sourceTree = "<group>"; };
 		43AC744929C8780E0019700E /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = is.lproj/BiometricAuthentication.strings; sourceTree = "<group>"; };
@@ -19259,6 +19261,7 @@
 				43A692E02D1981B900350EF4 /* tt */,
 				43E58E4F2D6C8B9200B07153 /* tg */,
 				435B20BB2D75C47A00D1CC3A /* es-ES */,
+				434751C82DEDBF1700F9B963 /* et */,
 			);
 			name = Bookmarks.strings;
 			sourceTree = "<group>";
@@ -20344,6 +20347,7 @@
 				432AAF702DC5020900BC9880 /* zh-CN */,
 				430029772DC50210001DD056 /* zh-TW */,
 				43A1C7222DDB49EE00CE5991 /* si */,
+				43AC623E2DEDBF61000E5526 /* hr */,
 			);
 			name = LiveActivity.strings;
 			sourceTree = "<group>";
