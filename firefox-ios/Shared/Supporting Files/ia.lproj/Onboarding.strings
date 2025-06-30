@@ -158,7 +158,7 @@
 "Onboarding.TermsOfService.Title.v135" = "Benvenite a %@";
 
 /* Title for the Terms of Use button link, in the Terms of Use screen for redirecting the user to the Terms of Use page. %@ is the app name (e.g. Firefox). */
-"Onboarding.TermsOfUse.TermsOfUseLink.v136" = "%@ Terminos de uso.";
+"Onboarding.TermsOfUse.TermsOfUseLink.v136" = "Conditiones de uso de %@.";
 
 /* Accessibility label for the wallpaper onboarding modal displayed on top of the homepage. This describes to the user that which type of wallpaper they are seeing. */
 "Onboarding.Wallpaper.Accessibility.Classic.v114" = "Fundo classic";
