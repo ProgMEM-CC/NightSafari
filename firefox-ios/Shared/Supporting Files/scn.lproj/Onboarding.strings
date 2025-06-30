@@ -20,7 +20,7 @@
 "Onboarding.Customization.Intro.Continue.Action.v123" = "Pirsunalizza %@";
 
 /* String used to describe the description label of the customization onboarding page in our Onboarding screens. */
-"Onboarding.Customization.Intro.Description.v123" = "Mposta u to tema e a barra dî stigghi p'appattari cû to stili di navicazzioni ùnicu.";
+"Onboarding.Customization.Intro.Description.v123" = "Mposta u to tema e a barra dî stigghi p’appattari cû to stili di navicazzioni ùnicu.";
 
 /* String used to describe the option to skip the customization cards in Firefox Onboarding screens and start browsing. */
 "Onboarding.Customization.Intro.Skip.Action.v123" = "Accumincia a navicari";
@@ -80,13 +80,13 @@
 "Onboarding.Notification.Continue.Action.v114" = "Cuntinua";
 
 /* String used to describe the description of the notification onboarding page in our Onboarding screens. %@ is the app name (e.g. Firefox). */
-"Onboarding.Notification.Description.v120" = "Manna i to schedi di manera sicura ntra i to dispusitivi e scopri l'autri carattarìstichi di privatizza di %@.";
+"Onboarding.Notification.Description.v120" = "Manna i to schedi di manera sicura ntra i to dispusitivi e scopri l’autri carattarìstichi di privatizza di %@.";
 
 /* String used to describe the option to skip the notification permission in Firefox Onboarding screens. */
 "Onboarding.Notification.Skip.Action.v115" = "Sauta";
 
 /* String used to describe the title of the notification onboarding page in our Onboarding screens. %@ is the app name (e.g. Firefox). */
-"Onboarding.Notification.Title.v120" = "I nutìfichi t'ajùtanu a stari ô sicuru cu %@";
+"Onboarding.Notification.Title.v120" = "I nutìfichi t’ajùtanu a stari ô sicuru cu %@";
 
 /* String used to describe the option to continue to ask for the notification permission in Firefox Onboarding screens. */
 "Onboarding.Notification.TurnOnNotifications.Action.v114" = "Aḍḍuma nutìfichi";
@@ -101,7 +101,7 @@
 "Onboarding.Sync.Skip.Action.v114" = "Sauta";
 
 /* String used to describes the title of what Firefox is on the Sync onboarding page for current version in our Onboarding screens. */
-"Onboarding.Sync.Title.v120" = "Arresta ô sicuru quannu passi d'un dispusitivu a n'autru";
+"Onboarding.Sync.Title.v120" = "Arresta ô sicuru quannu passi d’un dispusitivu a n’autru";
 
 /* Title for the confirmation button for Terms of Service agreement, in the Terms of Service screen. */
 "Onboarding.TermsOfService.AgreementButtonTitle.v135" = "Accetta e cuntinua";
@@ -116,7 +116,7 @@
 "Onboarding.TermsOfService.ManageLink.v135" = "Manija";
 
 /* Agreement text for sending diagnostic and interaction data to Mozilla in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is company name (e.g. Mozilla), %3$@ is a Manage link button which redirect the user to another screen in order to manage the data collection preferences. */
-"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "P'ajutàrini a 'mmigghiurari u navicaturi, %1$@ manna dati diagnòstici e di ntirazzioni a %2$@. %3$@";
+"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "P’ajutàrini a fari megghiu u navicaturi, %1$@ manna dati diagnòstici e di ntirazzioni a %2$@. %3$@";
 
 /* Agreement text for Privacy Notice in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is for the Privacy Notice link button that redirect the user to the Privacy Notice page. */
 "Onboarding.TermsOfService.PrivacyNoticeAgreement.v135" = "A %1$@ ci ntiressa dâ to privatizza. Leggi cchiù assai nnô nostru %2$@";
@@ -134,16 +134,16 @@
 "Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsDescription.v135" = "I signalijazzioni dî scasci ni pirmèttinu di diagnusticari e abbirsari i prubblemi dû navicaturi. %@";
 
 /* Title for the send crash reports switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. */
-"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v135" = "Manna 'n autumàticu i signalijazzioni di scasciu";
+"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v135" = "Manna ’n autumàticu i signalijazzioni di scasciu";
 
 /* Description for the technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %1$@ is the app name (e.g. Firefox), %2$@ is for the Learn more button link, to open a link where user can find more information about this send technical and interaction data option. */
-"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataDescription.v135" = "Dati supra ô to dispusitivu, a cunfijurazzioni hardware e ncapu a comu usi %1$@ n'ajuta a travagghiari megghiu ncapu ê carattarìstichi, i pristazzioni e a stabbilità pi tutti l'utenti. %2$@";
+"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataDescription.v135" = "Dati supra ô to dispusitivu, a cunfijurazzioni hardware e ncapu a comu usi %1$@ n’ajuta a travagghiari megghiu ncapu ê carattarìstichi, i pristazzioni e a stabbilità pi tutti l’utenti. %2$@";
 
 /* Title for the send technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is the company name (e.g. Mozilla). */
 "Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v135" = "Manna dati tècnici e di ntirazzioni a %@";
 
 /* Title for the Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. Data like crash reports or technical and interaction data. %@ is the app name (e.g. Firefox). */
-"Onboarding.TermsOfService.PrivacyPreferences.Title.v135" = "Ajùtani a 'mmigghiurari a %@";
+"Onboarding.TermsOfService.PrivacyPreferences.Title.v135" = "Ajùtani a fari megghiu %@";
 
 /* Subtitle for the Terms of Service screen in the onboarding process. */
 "Onboarding.TermsOfService.Subtitle.v136" = "Navicazzioni lesta e sicura";
@@ -188,10 +188,10 @@
 "Onboarding.Welcome.Close.AccessibilityLabel.v121" = "Chiuji e nesci dâ ntruduzzioni a %@";
 
 /* String used to describes the description of what Firefox is on the welcome onboarding page for current version in our Onboarding screens. */
-"Onboarding.Welcome.Description.TreatementA.v120" = "U nostru navicaturi senza scopu di lucru t'ajuta a bluccari 'n autumàticu l'urganizzazzioni chi, 'n sicritu, ti sicùtanu riti riti mentri chi nàvichi.";
+"Onboarding.Welcome.Description.TreatementA.v120" = "U nostru navicaturi senza scopu di lucru t’ajuta a bluccari ’n autumàticu l’urganizzazzioni chi, ’n sicritu, ti sicùtanu riti riti mentri chi nàvichi.";
 
 /* String used to describes the description of what Firefox is on the welcome onboarding page for current version in our Onboarding screens. %@ is the app name (e.g. Firefox). */
-"Onboarding.Welcome.Description.v120" = "U nostru navicaturi senza scopu di lucru t'ajuta a bluccari 'n autumàticu l'urganizzazzioni chi, 'n sicritu, ti sicùtanu riti riti mentri chi nàvichi.";
+"Onboarding.Welcome.Description.v120" = "U nostru navicaturi senza scopu di lucru t’ajuta a bluccari ’n autumàticu l’urganizzazzioni chi, ’n sicritu, ti sicùtanu riti riti mentri chi nàvichi.";
 
 /* String used to describe the title of link button is on the welcome onboarding page for current version in our Onboarding screens. */
 "Onboarding.Welcome.Link.Action.v114" = "Cchiù nfurmazzioni nnô nostru abbisu di privatizza";
@@ -203,5 +203,5 @@
 "Onboarding.Welcome.Title.TreatementA.v120" = "Ni piaci tinìriti ô sicuru";
 
 /* String used to describes the title of what Firefox is on the welcome onboarding page for current version in our Onboarding screens. */
-"Onboarding.Welcome.Title.v114" = "Bummegna nta n'internet nnipinnenti";
+"Onboarding.Welcome.Title.v114" = "Bummegna nta n’internet nnipinnenti";
 

@@ -116,7 +116,7 @@
 "Onboarding.TermsOfService.ManageLink.v135" = "მართვა";
 
 /* Agreement text for sending diagnostic and interaction data to Mozilla in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is company name (e.g. Mozilla), %3$@ is a Manage link button which redirect the user to another screen in order to manage the data collection preferences. */
-"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "ბრაუზერის გასაუმჯობესებლად %1$@ უგზავნის %2$@-ს შემოწმებისა და გამოყენების მონაცემებს. %3$@";
+"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "ბრაუზერის გასაუმჯობესებლად %1$@ გზავნის შემოწმებისა და გამოყენების მონაცემებს, რომელთაც გაეცნობა %2$@. %3$@";
 
 /* Agreement text for Privacy Notice in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is for the Privacy Notice link button that redirect the user to the Privacy Notice page. */
 "Onboarding.TermsOfService.PrivacyNoticeAgreement.v135" = "%1$@ ზრუნავს თქვენს პირადულობაზე. ვრცლად, იხილეთ %2$@";
@@ -140,7 +140,7 @@
 "Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataDescription.v135" = "მონაცემები თქვენი მოწყობილობის, აპარატურული გაწყობისა და იმის შესახებ, თუ როგორ გამოიყენება %1$@, გვეხმარება შესაძლებლობების, წარმადობისა და მდგრადობის გაუმჯობესებაში ყველა მომხმარებლისთვის. %2$@";
 
 /* Title for the send technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is the company name (e.g. Mozilla). */
-"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v135" = "ტექნიკური და გამოყენების მონაცემები გაეგზავნოს %@-ს";
+"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v135" = "ტექნიკურ და გამოყენების მონაცემებს გაეცნოს %@";
 
 /* Title for the Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. Data like crash reports or technical and interaction data. %@ is the app name (e.g. Firefox). */
 "Onboarding.TermsOfService.PrivacyPreferences.Title.v135" = "დაგვეხმარეთ, გავაუმჯობესოთ %@";
