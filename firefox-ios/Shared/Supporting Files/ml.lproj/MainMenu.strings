@@ -14,10 +14,10 @@
 "MainMenu.Account.AccessibilityLabels.CloseButton.v132" = "അടയ്ക്കുക";
 
 /* The accessibility label for the sign in button in the Main menu header view. */
-"MainMenu.Account.AccessibilityLabels.MainButton.v132" = "രഹസ്യവാക്കുകളും ടാബുകളും മറ്റും സമന്വയിപ്പിക്കാൻ പ്രവേശിക്കൽ ചെയ്യുക";
+"MainMenu.Account.AccessibilityLabels.MainButton.v132" = "ഒളിവാക്കുകളും ടാബുകളും മറ്റും സമന്വയിപ്പിക്കാൻ പ്രവേശിക്കൽ ചെയ്യുക";
 
 /* On the main menu, at the top, when the user is signed out. The description for the sign in action */
-"MainMenu.Account.SignedOut.Description.v131" = "രഹസ്യവാക്കുകളും ടാബുകളും മറ്റും സമന്വയിപ്പിക്കുക";
+"MainMenu.Account.SignedOut.Description.v131" = "ഒളിവാക്കുകളും ടാബുകളും മറ്റും സമന്വയിപ്പിക്കുക";
 
 /* On the main menu, at the top, when the user is signed out. The title for the sign in action */
 "MainMenu.Account.SignedOut.Title.v131" = "പ്രവേശിക്കുക";
@@ -26,7 +26,7 @@
 "MainMenu.Account.SyncError.Description.v131" = "സമന്വയിപ്പിക്കൽ താൽക്കാലികമായി നിർത്തി";
 
 /* On the main menu, at the top, when the user is signed in but there was an error syncing. The title for this state. */
-"MainMenu.Account.SyncError.Title.v131" = "സമന്വയിപ്പിക്കാനായി പ്രവേശിക്കൽ ചെയ്യുക";
+"MainMenu.Account.SyncError.Title.v131" = "സമന്വയിപ്പിക്കാനായി പ്രവേശിക്കുക";
 
 /* On the main menu, the accessibility label for the action that will take the user to the Bookmarks panel. */
 "MainMenu.PanelLinkSection.AccessibilityLabels.Bookmarks.v132" = "അടയാളക്കുറിപ്പുകള്‍";
@@ -38,7 +38,7 @@
 "MainMenu.PanelLinkSection.AccessibilityLabels.History.v132" = "നാള്‍വഴി";
 
 /* On the main menu, the accessibility label for the action that will take the user to the Passwords panel in the settings screen. */
-"MainMenu.PanelLinkSection.AccessibilityLabels.Passwords.v132" = "രഹസ്യവാക്കുകൾ";
+"MainMenu.PanelLinkSection.AccessibilityLabels.Passwords.v132" = "ഒളിവാക്കുകൾ";
 
 /* On the main menu, the title for the action that will take the user to the Bookmarks panel. */
 "MainMenu.PanelLinkSection.Bookmarks.Title.v131" = "അടയാളക്കുറിപ്പുകള്‍";
@@ -50,7 +50,7 @@
 "MainMenu.PanelLinkSection.History.Title.v131" = "നാള്‍വഴി";
 
 /* On the main menu, the title for the action that will take the user to the Passwords panel in the settings screen. */
-"MainMenu.PanelLinkSection.Passwords.Title.v131" = "രഹസ്യവാക്കുകൾ";
+"MainMenu.PanelLinkSection.Passwords.Title.v131" = "ഒളിവാക്കുകൾ";
 
 /* On the main menu, the accessibility labels for the action that will take the user to the Customize Homepage section in the settings screen. */
 "MainMenu.SettingsSection.AccessibilityLabels.CustomizeHomepage.v132" = "ആമുഖത്താൾ ഇഷ്ടാനുസൃതമാക്കുക";
@@ -233,10 +233,10 @@
 "MainMenu.Submenus.Tools.Share.Title.v131" = "പങ്കിടുക";
 
 /* On the main menu, the title for the action that will turn Website's Dark Mode off in the application. */
-"MainMenu.Submenus.Tools.WebsiteDarkMode.Off.Title.v137" = "വെബിട ഇരുണ്ട പരി അണക്കുക";
+"MainMenu.Submenus.Tools.WebsiteDarkMode.Off.Title.v137" = "വെബ്ബിട ഇരുളിമ പരി അണയ്ക്കുക";
 
 /* On the main menu, the title for the action that will turn Website's Dark Mode on in the application. */
-"MainMenu.Submenus.Tools.WebsiteDarkMode.On.Title.v137" = "വെബിട ഇരുണ്ട പരി ഇടുക";
+"MainMenu.Submenus.Tools.WebsiteDarkMode.On.Title.v137" = "വെബ്ബിട ഇരുളിമപരി ഇടുക";
 
 /* This string is for the Zoom tool, when Zoom value is negative. (-50%) */
 "MainMenu.Submenus.Tools.Zoom.NegativeSymbol.v137" = "-";
