@@ -14,10 +14,10 @@
 "MainMenu.Account.AccessibilityLabels.CloseButton.v132" = "Κλείσιμο";
 
 /* The accessibility label for the sign in button in the Main menu header view. */
-"MainMenu.Account.AccessibilityLabels.MainButton.v132" = "Συνδεθείτε για να συγχρονίστε κωδικούς πρόσβασης, καρτέλες και πολλά άλλα";
+"MainMenu.Account.AccessibilityLabels.MainButton.v132" = "Συνδεθείτε για να συγχρονίσετε συνθηματικά, καρτέλες και πολλά άλλα";
 
 /* On the main menu, at the top, when the user is signed out. The description for the sign in action */
-"MainMenu.Account.SignedOut.Description.v131" = "Συγχρονίστε κωδικούς πρόσβασης, καρτέλες και πολλά άλλα";
+"MainMenu.Account.SignedOut.Description.v131" = "Συγχρονίστε συνθηματικά, καρτέλες και πολλά άλλα";
 
 /* On the main menu, at the top, when the user is signed out. The title for the sign in action */
 "MainMenu.Account.SignedOut.Title.v131" = "Σύνδεση";
@@ -38,7 +38,7 @@
 "MainMenu.PanelLinkSection.AccessibilityLabels.History.v132" = "Ιστορικό";
 
 /* On the main menu, the accessibility label for the action that will take the user to the Passwords panel in the settings screen. */
-"MainMenu.PanelLinkSection.AccessibilityLabels.Passwords.v132" = "Κωδικοί πρόσβασης";
+"MainMenu.PanelLinkSection.AccessibilityLabels.Passwords.v132" = "Συνθηματικά";
 
 /* On the main menu, the title for the action that will take the user to the Bookmarks panel. */
 "MainMenu.PanelLinkSection.Bookmarks.Title.v131" = "Σελιδοδείκτες";
@@ -50,7 +50,7 @@
 "MainMenu.PanelLinkSection.History.Title.v131" = "Ιστορικό";
 
 /* On the main menu, the title for the action that will take the user to the Passwords panel in the settings screen. */
-"MainMenu.PanelLinkSection.Passwords.Title.v131" = "Κωδικοί πρόσβασης";
+"MainMenu.PanelLinkSection.Passwords.Title.v131" = "Συνθηματικά";
 
 /* On the main menu, the accessibility labels for the action that will take the user to the Customize Homepage section in the settings screen. */
 "MainMenu.SettingsSection.AccessibilityLabels.CustomizeHomepage.v132" = "Προσαρμογή αρχικής σελίδας";
@@ -80,7 +80,7 @@
 "MainMenu.Submenus.Save.AccessibilityLabels.AddToHomeScreen.Subtitle.v132" = "Αρχική";
 
 /* On the main menu, in the Save submenu, the accessibility label for the menu component that allows a user to add a website to the iOS home screen. */
-"MainMenu.Submenus.Save.AccessibilityLabels.AddToHomeScreen.Title.v132" = "Προσθήκη στην αρχική οθόνη";
+"MainMenu.Submenus.Save.AccessibilityLabels.AddToHomeScreen.Title.v132" = "Προσθήκη στην οθόνη Αφετηρίας";
 
 /* On the main menu, a string below the Save submenu accessibility label, indicating what kind of tools are available in that menu. This string is for the Shortcuts tool. */
 "MainMenu.Submenus.Save.AccessibilityLabels.AddToShortcuts.Subtitle.v132" = "Συντόμευση";
@@ -119,7 +119,7 @@
 "MainMenu.Submenus.Save.AddToHomeScreen.Subtitle.v131" = "Αρχική";
 
 /* On the main menu, in the Save submenu, the title for the menu component that allows a user to add a website to the home screen. */
-"MainMenu.Submenus.Save.AddToHomeScreen.Title.v131" = "Προσθήκη στην αρχική οθόνη";
+"MainMenu.Submenus.Save.AddToHomeScreen.Title.v131" = "Προσθήκη στην οθόνη Αφετηρίας";
 
 /* On the main menu, a string below the Save submenu title, indicating what kind of tools are available in that menu. This string is for the Shortcuts tool. */
 "MainMenu.Submenus.Save.AddToShortcuts.Subtitle.v131" = "Συντόμευση";
@@ -275,10 +275,10 @@
 "MainMenu.ToolsSection.AccessibilityLabels.Save.v133" = "Υπομενού αποθήκευσης";
 
 /* On the main menu, the accessibility label for the action that will switch a site from mobile version to the desktop version, if available. */
-"MainMenu.ToolsSection.AccessibilityLabels.SwitchToDesktopSite.v132" = "Εναλλαγή σε έκδοση για υπολογιστές";
+"MainMenu.ToolsSection.AccessibilityLabels.SwitchToDesktopSite.v132" = "Εναλλαγή στην έκδοση υπολογιστή";
 
 /* On the main menu, the accessibility label for the action that will switch a site from the desktop version to the mobile version. */
-"MainMenu.ToolsSection.AccessibilityLabels.SwitchToMobileSite.v132" = "Εναλλαγή σε έκδοση για κινητά";
+"MainMenu.ToolsSection.AccessibilityLabels.SwitchToMobileSite.v132" = "Εναλλαγή στην έκδοση κινητού";
 
 /* On the main menu, the accessibility label for the action that will take the user to the Tools submenu in the menu. */
 "MainMenu.ToolsSection.AccessibilityLabels.Tools.v132" = "Εργαλεία";
@@ -293,10 +293,10 @@
 "MainMenu.ToolsSection.SaveSubmenu.Title.v131" = "Αποθήκευση";
 
 /* On the main menu, the title for the action that will switch a site from mobile version to the desktop version, if available. */
-"MainMenu.ToolsSection.SwitchToDesktopSite.Title.v131" = "Εναλλαγή σε έκδοση για υπολογιστές";
+"MainMenu.ToolsSection.SwitchToDesktopSite.Title.v131" = "Εναλλαγή στην έκδοση υπολογιστή";
 
 /* On the main menu, the title for the action that will switch a site from the desktop version to the mobile version. */
-"MainMenu.ToolsSection.SwitchToMobileSite.Title.v131" = "Εναλλαγή σε έκδοση για κινητά";
+"MainMenu.ToolsSection.SwitchToMobileSite.Title.v131" = "Εναλλαγή στην έκδοση κινητού";
 
 /* On the main menu, the title for the action that will take the user to the Tools submenu in the menu. */
 "MainMenu.ToolsSection.ToolsSubmenu.Title.v131" = "Εργαλεία";
