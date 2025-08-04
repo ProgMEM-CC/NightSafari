@@ -1132,6 +1132,15 @@
 /* The placeholder for URL Field when saving a custom search engine */
 "Settings.AddCustomEngine.URLPlaceholder" = "URL (Amsavit ar c’hlask gant %s)";
 
+/* In the settings menu, in the Address Bar customization section, this label indicates that selecting this will make the address bar appear at the bottom of the screen. */
+"Settings.AddressBar.Bottom.v138" = "Traoñ";
+
+/* In the settings menu, this label indicates that there is an option of customizing the Address Bar position. */
+"Settings.AddressBar.SettingsTitle.v138" = "Barrenn chomlec’hioù";
+
+/* In the settings menu, in the Address Bar customization section, this label indicates that selecting this will make the address bar appear at the top of the screen. */
+"Settings.AddressBar.Top.v138" = "Krec’h";
+
 /* Browser theme settings section title in Appearance settings */
 "Settings.Appearance.BrowserTheme.SectionHeader.v137" = "Neuz ar merdeer";
 
